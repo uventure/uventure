@@ -1,12 +1,15 @@
+<template name="map">
+  <div class="map-container" style="width: 100%; max-width: 100%; height: 500px;">
+    {{> googleMap name="map" options=mapOptions}}
+  </div>
+</template>
+
 <template name="Add_Adventure_Page">
-
-  <h1 style="text-align:center;">Start an adventure!</h1>
   <div class="ui container">
-
-
+    <br><br><br>
+    <h1 style="text-align:center;">Start an adventure!</h1>
+    {{> map}}
     <div class="ui form" style="padding: 2em;">
-
-
       <div class="two fields">
         <div class="field">
           <label>ADVENTURE</label>

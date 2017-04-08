@@ -1,5 +1,5 @@
 {
-  "name": "meteor-application-template",
+  "name": "uVenture",
   "private": true,
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",

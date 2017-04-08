@@ -1,7 +1,7 @@
 import './home-page.html';
 
 import './add-adventure-page.html';
-
+import './add-adventure-page';
 
 import './find-adventure-page.html';
 
