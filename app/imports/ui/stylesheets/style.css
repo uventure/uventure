@@ -1,0 +1,10 @@
+body {
+  padding-top: 61px;  /* Move body of page below navbar. */
+}
+
+.grad-background {
+  background: url('/images/landing.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 500px;
+  color: white;
+}

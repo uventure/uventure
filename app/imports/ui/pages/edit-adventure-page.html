@@ -1,0 +1,51 @@
+<template name="Edit_Adventure_Page">
+  <h1 style="text-align: center;">Change your adventure!</h1>
+  <div class="ui form" style="padding: 2em;">
+    <div class="two fields">
+      <div class="field">
+        <label>ADVENTURE</label>
+        <input type="text" placeholder="Adventure Name">
+      </div>
+      <div class="field">
+        <label>ADVENTURE ORGANIZER</label>
+        <input type="text" placeholder="Organizer Name">
+      </div>
+
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>ADVENTURE TYPE</label>
+        <select class="ui dropdown">
+          <option value="">TYPE</option>
+          <option value="3">OTHER</option>
+          <option value="2">PARTYING</option>
+          <option value="1">HIKING</option>
+          <option value="0">SWIMMING</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>ADVENTURE LOCATION</label>
+        <input type="text" placeholder="Adventure Location">
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>ORGANIZER EMAIL</label>
+        <input type="text" placeholder="Organizer Email">
+      </div>
+      <div class="field">
+        <label>ORGANIZER PHONE</label>
+        <input type="text" placeholder="Phone Number">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden">
+        <label>I agree to the Terms and Conditions</label>
+      </div>
+    </div>
+    <button class="ui button" type="submit">Edit</button>
+
+  </div>
+</template>
