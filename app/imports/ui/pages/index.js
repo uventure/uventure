@@ -1,4 +1,5 @@
 import './home-page.html';
+import './home-page.js';
 
 import './add-adventure-page.html';
 import './add-adventure-page';
