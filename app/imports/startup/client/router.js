@@ -9,7 +9,7 @@ FlowRouter.route('/', {
 });
 
 FlowRouter.route('/find', {
-  name: 'Find_Stuff_Page',
+  name: 'Find_Adventure_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Find_Adventure_Page' });
   },
