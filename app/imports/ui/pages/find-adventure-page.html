@@ -1,50 +1,97 @@
 <template name="Find_Adventure_Page">
-  <h1 style="text-align: center;">Find an adventure!</h1>
-  <div class="ui container">
+  {{#if Template.subscriptionsReady}}
+  <div style="margin-top: 100px" class="ui container">
+    <h1>List of Adventures</h1>
+    <div class="ui cards">
 
-    <table style="margin-top: 20px;" class="ui celled table">
-      <thead>
-      <tr>
-        <th>Adventure Name</th>
-        <th>Organizer Name</th>
-        <th>Telephone</th>
-        <th>Type</th>
-        <th>Location</th>
-        <th>Email</th>
-        <th>Edit</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>Hiking Diamond Head</td>
-        <td>John Joe</td>
-        <td>808-322-2110</td>
-        <td>HIKING</td>
-        <td>Diamond Head</td>
-        <td>3err3n@hawaii.edu</td>
-        <td>Edit</td>
-      </tr>
+      <div class="card">
+        <div class="ui large rounded image">
+          <img src="/images/waimanofalls.jpg"/>
+        </div>
+        <div class="content">
+          <div class="header">Waimano Falls</div>
+          <div class="location">
+            <p>Located in Pearl City</p>
+          </div>
+          <div class="Organizer Name">
+            <p>John Joe</p>
+          </div>
+          <div class="telephone">
+            <p>808-322-2110</p>
+          </div>
+          <div class="type">
+            <p>Swimming</p>
+          </div>
+          <div class="email">
+            <p>3err3n@hawaii.edu</p>
+          </div>
+          <button class="small blue ui button" type="submit" a href="{{pathFor 'Edit_Adventure_Page' _id=contact._id}}">Edit
+          </button>
+          <form action="http://google.com">
+            <input type="submit" value="More info"/>
+          </form>
+        </div>
+      </div>
 
-      <tr>
-        <td>Steal Declaration of Independence</td>
-        <td>George Clooney</td>
-        <td>808-512-2110</td>
-        <td>OTHER</td>
-        <td>Iolani Palace</td>
-        <td>fjjen@hawaii.edu</td>
-        <td>Edit</td>
-      </tr>
+      <div class="card">
+        <div class="ui large rounded image">
+          <img src="/images/kuliououridge.jpg"/>
+        </div>
+        <div class="content">
+          <div class="header">Kuliouou Ridge Trail</div>
+          <div class="location">
+            <p>Located in Pearl City</p>
+          </div>
+          <div class="Organizer Name">
+            <p>Aaron Vanue</p>
+          </div>
+          <div class="telephone">
+            <p>808-282-2110</p>
+          </div>
+          <div class="type">
+            <p>Hiking</p>
+          </div>
+          <div class="email">
+            <p>phwwwr@hawaii.edu</p>
+          </div>
+          <button class="small blue ui button" type="submit" a href="{{pathFor 'Edit_Adventure_Page' _id=contact._id}}">Edit
+          </button>
+          <form action="http://google.com">
+            <input type="submit" value="More info"/>
+          </form>
+        </div>
+      </div>
 
-      <tr>
-        <td>Skydiving</td>
-        <td>Aaron Vanue</td>
-        <td>808-282-2110</td>
-        <td>OTHER</td>
-        <td>North Shore</td>
-        <td>phwwwr2@hawaii.edu</td>
-        <td>Edit</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+      <div class="card">
+        <div class="ui large rounded image">
+          <img src="/images/sandybeach.jpg"/>
+        </div>
+        <div class="content">
+          <div class="header">Haiku Stairs</div>
+          <div class="location">
+            <p>Located on Kalanianaole Hwy</p>
+          </div>
+          <div class="Organizer Name">
+            <p>George Clooney</p>
+          </div>
+          <div class="telephone">
+            <p>808-512-2110</p>
+          </div>
+          <div class="type">
+            <p>Hiking</p>
+          </div>
+          <div class="email">
+            <p>fijjen@hawaii.edu</p>
+          </div>
+          <button class="small blue ui button" type="submit" a href="{{pathFor 'Edit_Adventure_Page' _id=contact._id}}">Edit
+          </button>
+          <form action="http://google.com">
+            <input type="submit" value="More info"/>
+          </form>
+        </div>
+      </div>
+
+      </div>
+    </div>
+    {{/if}}
 </template>
