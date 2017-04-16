@@ -3,6 +3,7 @@
   <div class="ui container">
       <a class="item" href="{{pathFor 'Home_Page'}}"><h1>uVenture</h1></a>
     <a class="{{ isActiveRoute 'List_Stuff_Page'}} item" href="{{ pathFor 'Find_Adventure_Page' }}">Find Adventure! </a>
+    <a class="{{ isActiveRoute 'List_Stuff_Page'}} item" href="{{ pathFor 'Find_Adventure_Page' }}">Suggested Adventures! </a>
       {{#if currentUser}}
         <a class="{{ isActiveRoute 'Add_Stuff_Page'}} item" href="{{ pathFor 'Add_Adventure_Page' }}">Add Adventure! </a>
         <a class="{{ isActiveRoute 'List_Stuff_Page'}} item" href="{{ pathFor 'Find_Adventure_Page' }}">Find Adventure! </a>
