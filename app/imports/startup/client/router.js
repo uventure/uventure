@@ -36,6 +36,13 @@ FlowRouter.route('/profile', {
   },
 });
 
+FlowRouter.route('/suggestion', {
+  name: 'Suggestion_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Suggestion_Page' });
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });
