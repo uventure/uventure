@@ -43,3 +43,47 @@ body {
   0px 24px 2px rgba(0,0,0,0.1),
   0px 34px 30px rgba(0,0,0,0.1);
 }
+
+.categories {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  display: inline-block
+  position: relative;
+  margin-top: -5px;
+}
+
+.ui.black.button.button1 {
+  position:absolute;
+  width:100px;
+  height:30px;
+  top:500px;
+  left:50%;
+  margin: -20px 0px 0px -75px;
+}
+
+.ui.black.button.button2 {
+  position:absolute;
+  width:100px;
+  height:30px;
+  top:1000px;
+  left:50%;
+  margin: -20px 0px 0px -75px;
+}
+
+.ui.black.button.button3 {
+  position:absolute;
+  width:100px;
+  height:30px;
+  top:1500px;
+  left:50%;
+  margin: -20px 0px 0px -75px;
+}
+
+
+
+
+
