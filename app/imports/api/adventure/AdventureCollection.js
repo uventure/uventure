@@ -10,13 +10,13 @@ import { _ } from 'meteor/underscore';
  * Represents a specific interest, such as "Software Engineering".
  * @extends module:Base~BaseCollection
  */
-class InterestCollection extends BaseCollection {
+class AdventureCollection extends BaseCollection {
 
   /**
    * Creates the Interest collection.
    */
   constructor() {
-    super('Interest', new SimpleSchema({
+    super('Adventure', new SimpleSchema({
       name: { type: String },
       description: { type: String, optional: true },
     }));
@@ -37,7 +37,7 @@ class InterestCollection extends BaseCollection {
     check(name, String);
     check(description, String);
     if (this.find({ name }).count() > 0) {
-      throw new Meteor.Error(`${name} is previously defined in another Interest`);
+      throw new Meteor.Error(`${name} is previously defined in another Adventure`);
     }
     return this._collection.insert({ name, description });
   }
@@ -48,9 +48,9 @@ class InterestCollection extends BaseCollection {
    * @returns { String } An interest name.
    * @throws { Meteor.Error} If the interest docID cannot be found.
    */
-  findName(interestID) {
-    this.assertDefined(interestID);
-    return this.findDoc(interestID).name;
+  findName(adventureID) {
+    this.assertDefined(adventureID);
+    return this.findDoc(adventureID).name;
   }
 
   /**
@@ -59,8 +59,8 @@ class InterestCollection extends BaseCollection {
    * @returns { Array }
    * @throws { Meteor.Error} If any of the instanceIDs cannot be found.
    */
-  findNames(interestIDs) {
-    return interestIDs.map(interestID => this.findName(interestID));
+  findNames(adventureIDs) {
+    return adventureIDs.map(adventureID => this.findName(adventureID));
   }
 
   /**
@@ -116,4 +116,4 @@ class InterestCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Interests = new InterestCollection();
+export const Adventures = new AdventureCollection();
