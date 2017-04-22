@@ -12,7 +12,7 @@ if (Meteor.isClient) {
                 var addedMarker = new google.maps.Marker({
                   position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
                   map: GoogleMaps.maps.map.instance,
-                  animation: google.maps.Animation.DROP,
+                  animation: google.maps.Animation.BOUNCE,
                   draggable: true,
                 })
               }
@@ -37,4 +37,3 @@ if (Meteor.isClient) {
     }
   });
 }
-

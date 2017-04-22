@@ -17,8 +17,13 @@ class AdventureCollection extends BaseCollection {
    */
   constructor() {
     super('Adventure', new SimpleSchema({
-      name: { type: String },
+      adventureName: { type: String },
+      organizerName: { type: String },
+      type: { type: [String], optional: true },
+      contact: { type: String, optional: true },
+      location: { type: String, optional: true },
       description: { type: String, optional: true },
+      picture: { type: SimpleSchema.RegEx.Url, optional: true },
     }));
   }
 
@@ -33,13 +38,14 @@ class AdventureCollection extends BaseCollection {
    * @throws {Meteor.Error} If the interest definition includes a defined name.
    * @returns The newly created docID.
    */
-  define({ name, description }) {
-    check(name, String);
+  define({ adventureName, organizerName, type, contact, location, description, picture }) {
+    check(adventureName, String);
     check(description, String);
+    check(picture, String);
     if (this.find({ name }).count() > 0) {
-      throw new Meteor.Error(`${name} is previously defined in another Adventure`);
+      throw new Meteor.Error(`${name} is previously defined in another adventure`);
     }
-    return this._collection.insert({ name, description });
+    return this._collection.insert({ adventureName, organizerName, type, contact, location, description, picture });
   }
 
   /**
@@ -67,16 +73,16 @@ class AdventureCollection extends BaseCollection {
    * Throws an error if the passed name is not a defined Interest name.
    * @param name The name of an interest.
    */
-  assertName(name) {
-    this.findDoc(name);
+  assertName(adventureName) {
+    this.findDoc(adventureName);
   }
 
   /**
    * Throws an error if the passed list of names are not all Interest names.
    * @param names An array of (hopefully) Interest names.
    */
-  assertNames(names) {
-    _.each(names, name => this.assertName(name));
+  assertNames(adventureNames) {
+    _.each(adventureNames, adventureName => this.assertName(adventureName));
   }
 
   /**
@@ -85,8 +91,8 @@ class AdventureCollection extends BaseCollection {
    * @returns { String } The docID associated with the name.
    * @throws { Meteor.Error } If name is not associated with an Interest.
    */
-  findID(name) {
-    return (this.findDoc(name)._id);
+  findID(adventureName) {
+    return (this.findDoc(adventureName)._id);
   }
 
   /**
@@ -96,8 +102,8 @@ class AdventureCollection extends BaseCollection {
    * @returns { String[] } The docIDs associated with the names.
    * @throws { Meteor.Error } If any instance is not an Interest name.
    */
-  findIDs(names) {
-    return (names) ? names.map((instance) => this.findID(instance)) : [];
+  findIDs(adventureNames) {
+    return (adventureNames) ? adventureNames.map((instance) => this.findID(instance)) : [];
   }
 
   /**
@@ -107,9 +113,14 @@ class AdventureCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const name = doc.name;
+    const adventureName = doc.adventureName;
+    const organizerName = doc.organizerName;
+    const type = doc.type;
+    const contact = doc.contact;
+    const location = doc.location;
     const description = doc.description;
-    return { name, description };
+    const picture = doc.picture;
+    return { adventureName, organizerName, type, contact, location, description, picture };
   }
 }
 
