@@ -1,0 +1,25 @@
+<template name="faq_page">
+  <div id="container">
+    <div class="ui four column doubling stackable grid container">
+      <div class="ui top attached tabular menu">
+        <a class="active item" data-tab="first">Instructions</a>
+        <a class="item" data-tab="second">About Us</a>
+        <a class="item" data-tab="third">T.O.S</a>
+      </div>
+      <div class="ui bottom attached active tab segment" data-tab="first">
+        First
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="second">
+        Second
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="third">
+        Third
+      </div>
+    </div>
+  </div>
+  <script>$('.menu .item')
+      .tab()
+  ;
+  </script>
+</template>
+

@@ -43,6 +43,13 @@ FlowRouter.route('/suggestion', {
   },
 });
 
+FlowRouter.route('/faq', {
+  name: 'faq_page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'faq_page' });
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });
