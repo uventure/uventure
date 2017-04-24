@@ -5,63 +5,58 @@
 </template>
 
 <template name="Add_Adventure_Page">
+
   {{#if Template.subscriptionsReady}}
 
-  <div class="ui container">
-    <br><br><br>
-    <h1 style="text-align:center;">Start an adventure!</h1>
-    {{> map}}
-    <form class="ui equal width form adventure-data-form {{ successClass }} {{ errorClass }}">
-      <div class="two fields">
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="NAME" required=true errorMessage=(fieldError "AdventureName")}}
-        </div>
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="ORGANIZER" required=true errorMessage=(fieldError "OrganizerName")}}
-        </div>
+  <div class="ui text container segment">
+    <div class="ui dividing header">
+      Start your adventure!
+    </div>
+    <div>
+      {{> map}}
+    </div>
+    <form class="ui form adventure-data-form {{ successClass }} {{ errorClass }}">
+      <br>
+      <div class="fields">
+        {{> Text_Form_Control label="NAME" placeholder="Philip" value=adventure.adventureName errorMessage=(fieldError
+        "firstName")}}
+        {{> Text_Form_Control label="ORGANIZER" placeholder="Johnson" value=adventure.organizerName
+        errorMessage=(fieldError "lastName")}}
 
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="TYPE" required=true errorMessage=(fieldError "AdventureType")}}
-        </div>
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="LOCATION" required=true errorMessage=(fieldError "AdventureLocation")}}
-        </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="CONTACT" required=true errorMessage=(fieldError "Contact")}}
-        </div>
-        <div class="field">
-          <br><br>
-          {{> Text_Form_Control label="PICTURE" required=true errorMessage=(fieldError "Picture")}}
-        </div>
       </div>
 
       <div class="field">
-        <br><br>
-        {{> Text_Form_Control label="DESCRIPTION" required=true errorMessage=(fieldError "AdventureDescription")}}
+        {{> Text_Form_Control label="TYPE" placeholder="Student" value=adventure.type errorMessage=(fieldError
+        "title")}}
+        {{> Text_Form_Control label="LOCATION" placeholder="http://foo.com/shot.jpg" value=adventure.location
+        errorMessage=(fieldError "picture")}}
       </div>
 
       <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" name="terms">
-          <label>I agree to the Terms and Conditions</label>
-        </div>
+        {{> Text_Form_Control label="CONTACT" placeholder="interests" value=adventure.contact errorMessage=(fieldError
+        "interests") }}
       </div>
+
+      <div class="fields">
+
+        {{> Text_Form_Control label="PICTURE" placeholder="Student" value=adventure.picture errorMessage=(fieldError
+        "interests") }}
+
+      </div>
+
+      {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short bio statement here"
+      errorMessage=(fieldError "bio")}}
+
+
       <button class="ui primary button" type="submit">Submit</button>
       {{#if displaySuccessMessage}}
       <div class="ui success message">
-        <p>Adventure data successfully updated.</p>
+        <p>Profile data successfully updated.</p>
       </div>
       {{/if}}
     </form>
   </div>
+
   {{/if}}
+
 </template>
