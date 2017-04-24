@@ -4,60 +4,64 @@
   </div>
 </template>
 
-
 <template name="Add_Adventure_Page">
+  {{#if Template.subscriptionsReady}}
+
   <div class="ui container">
     <br><br><br>
     <h1 style="text-align:center;">Start an adventure!</h1>
     {{> map}}
-      <div class="ui form" style="padding: 2em;">
-        <div class="two fields">
-          <div class="field">
-            <label>ADVENTURE</label>
-            <input type="text" placeholder="Adventure Name">
-          </div>
-          <div class="field">
-            <label>ADVENTURE ORGANIZER</label>
-            <input type="text" placeholder="Organizer Name">
-          </div>
-
-        </div>
-        <div class="two fields">
-          <div class="field">
-            <label>ADVENTURE TYPE</label>
-            <select class="ui dropdown">
-              <option value="">TYPE</option>
-              <option value="1">HIKING</option>
-              <option value="2">SWIMMING</option>
-              <option value="3">PARTY</option>
-              <option value="4">OTHER</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>ADVENTURE LOCATION</label>
-            <input type="text" placeholder="Adventure Location">
-          </div>
-        </div>
-        <div class="two fields">
-          <div class="field">
-            <label>ORGANIZER EMAIL</label>
-            <input type="text" placeholder="Organizer Email">
-          </div>
-          <div class="field">
-            <label>ORGANIZER PHONE</label>
-            <input type="text" placeholder="Phone Number">
-          </div>
-        </div>
-
+    <form class="ui equal width form adventure-data-form {{ successClass }} {{ errorClass }}">
+      <div class="two fields">
         <div class="field">
-          <div class="ui checkbox">
-            <input type="checkbox" name="terms">
-            <label>I agree to the Terms and Conditions</label>
-          </div>
+          <br><br>
+          {{> Text_Form_Control label="NAME" required=true errorMessage=(fieldError "AdventureName")}}
         </div>
-        <button class="ui button" type="submit">Submit</button>
+        <div class="field">
+          <br><br>
+          {{> Text_Form_Control label="ORGANIZER" required=true errorMessage=(fieldError "OrganizerName")}}
+        </div>
+
       </div>
-    </div>
-  <script>
-  </script>
+      <div class="two fields">
+        <div class="field">
+          <br><br>
+          {{> Text_Form_Control label="TYPE" required=true errorMessage=(fieldError "AdventureType")}}
+        </div>
+        <div class="field">
+          <br><br>
+          {{> Text_Form_Control label="LOCATION" required=true errorMessage=(fieldError "AdventureLocation")}}
+        </div>
+      </div>
+      <div class="two fields">
+        <div class="field">
+          <br><br>
+          {{> Text_Form_Control label="CONTACT" required=true errorMessage=(fieldError "Contact")}}
+        </div>
+        <div class="field">
+          <br><br>
+          {{> Text_Form_Control label="PICTURE" required=true errorMessage=(fieldError "Picture")}}
+        </div>
+      </div>
+
+      <div class="field">
+        <br><br>
+        {{> Text_Form_Control label="DESCRIPTION" required=true errorMessage=(fieldError "AdventureDescription")}}
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" name="terms">
+          <label>I agree to the Terms and Conditions</label>
+        </div>
+      </div>
+      <button class="ui primary button" type="submit">Submit</button>
+      {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>Adventure data successfully updated.</p>
+      </div>
+      {{/if}}
+    </form>
+  </div>
+  {{/if}}
 </template>
