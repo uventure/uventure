@@ -1,5 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { $ } from 'meteor/jquery';
 
 FlowRouter.route('/', {
   name: 'Home_Page',
@@ -29,12 +30,30 @@ FlowRouter.route('/edit', {
   },
 });
 
-FlowRouter.route('/profile', {
-  name: 'Profile_Page',
+/* user routes */
+function addUserBodyClass() {
+  $('body').addClass('user-layout-body');
+}
+
+function removeUserBodyClass() {
+  $('body').removeClass('user-layout-body');
+}
+
+const userRoutes = FlowRouter.group({
+  prefix: '/:username',
+  name: 'userRoutes',
+  triggersEnter: [addUserBodyClass],
+  triggersExit: [removeUserBodyClass],
+});
+
+export const profilePageRouteName = 'Profile_Page';
+userRoutes.route('/profile', {
+  name: profilePageRouteName,
   action() {
-    BlazeLayout.render('App_Body', { main: 'Profile_Page' });
+    BlazeLayout.render('App_Body', { main: profilePageRouteName });
   },
 });
+
 
 FlowRouter.notFound = {
   action() {

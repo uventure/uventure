@@ -1,1 +1,1 @@
-import './ProfileCollection';
+import './ProfileCollection.js';

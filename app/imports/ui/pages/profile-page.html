@@ -1,114 +1,48 @@
 <template name="Profile_Page">
-  <div class="ui container">
-    <br><br><br>
-    <h1 style="text-align:center;">Your Profile</h1>
-    <div class="ui form" style="padding: 2em;">
-      <div class="two fields">
-        <div class="field">
-          <label>FIRST NAME</label>
-          <input type="text" placeholder="First Name">
-        </div>
-        <div class="field">
-          <label>LAST NAME</label>
-          <input type="text" placeholder="Last Name">
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="ui text container segment">
+      <div class="ui dividing header">
+        Profile
+      </div>
+      <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+
+        <div class="fields">
+          {{> Text_Form_Control label="First" placeholder="Philip" value=profile.firstName errorMessage=(fieldError "firstName")}}
+          {{> Text_Form_Control label="Last" placeholder="Johnson" value=profile.lastName errorMessage=(fieldError "lastName")}}
+
         </div>
 
-      </div>
-      <div class="two fields">
         <div class="field">
-          <label>ADVENTURE PREFERENCE</label>
-          <select class="ui dropdown">
-            <option value="">TYPE</option>
-            <option value="3">OTHER</option>
-            <option value="2">PARTYING</option>
-            <option value="1">HIKING</option>
-            <option value="0">SWIMMING</option>
-          </select>
+          {{> Text_Form_Control label="Title" placeholder="Student" value=profile.title errorMessage=(fieldError "title")}}
+          {{> Text_Form_Control label="Picture" placeholder="http://foo.com/shot.jpg" value=profile.picture errorMessage=(fieldError "picture")}}
         </div>
-        <div class="field">
-          <label>LOCATION PREFERENCE</label>
-          <select class="ui dropdown">
-            <option value="">LOCATION</option>
-            <option value="6">OTHER</option>
-            <option value="5">KAILUA</option>
-            <option value="4">HAWAII KAI</option>
-            <option value="3">MANOA</option>
-            <option value="2">WAIKIKI</option>
-            <option value="1">DOWNTOWN</option>
-            <option value="0">NORTH SHORE</option>
-          </select>
-        </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>EMAIL</label>
-          <input type="text" placeholder="Email">
-        </div>
-        <div class="field">
-          <label>PHONE NUMBER</label>
-          <input type="text" placeholder="Phone Number">
-        </div>
-      </div>
 
-      <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" tabindex="0" class="hidden">
-          <label>I agree to the Terms and Conditions</label>
+        <div class="field">
+          {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true }}
         </div>
-      </div>
-      <button class="ui button" type="submit">Submit</button>
+
+        <div class="fields">
+
+          {{> Social_Network_Form_Control label="Github" icon="github" placeholder="pmjohnson" value=profile.github errorMessage=(fieldError "github")}}
+          {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="pmjohnson" value=profile.facebook errorMessage=(fieldError "facebook")}}
+          {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="pmjohnson" value=profile.instagram errorMessage=(fieldError "instagram")}}
+
+        </div>
+
+        {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here" errorMessage=(fieldError "bio")}}
+
+
+        <button class="ui primary button" type="submit">Submit</button>
+        {{#if displaySuccessMessage}}
+          <div class="ui success message">
+            <p>Profile data successfully updated.</p>
+          </div>
+        {{/if}}
+      </form>
     </div>
-
-  </div>
-</template>
-
-<!--
-<template name="Profile_Page">
-
-{{#if Template.subscriptionsReady}}
-
-  <div class="ui text container segment">
-    <div class="ui dividing header">
-      Profile
-    </div>
-    <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
-
-      <div class="fields">
-        {{> Text_Form_Control label="First" placeholder="Philip" value=profile.firstName errorMessage=(fieldError "firstName")}}
-  {{> Text_Form_Control label="Last" placeholder="Johnson" value=profile.lastName errorMessage=(fieldError "lastName")}}
-
-      </div>
-
-      <div class="field">
-        {{> Text_Form_Control label="Title" placeholder="Student" value=profile.title errorMessage=(fieldError "title")}}
-  {{> Text_Form_Control label="Picture" placeholder="http://foo.com/shot.jpg" value=profile.picture errorMessage=(fieldError "picture")}}
-      </div>
-
-      <div class="field">
-        {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true }}
-      </div>
-
-      <div class="fields">
-
-        {{> Social_Network_Form_Control label="Github" icon="github" placeholder="pmjohnson" value=profile.github errorMessage=(fieldError "github")}}
-  {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="pmjohnson" value=profile.facebook errorMessage=(fieldError "facebook")}}
-  {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="pmjohnson" value=profile.instagram errorMessage=(fieldError "instagram")}}
-
-      </div>
-
-      {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here" errorMessage=(fieldError "bio")}}
-
-
-      <button class="ui primary button" type="submit">Submit</button>
-      {{#if displaySuccessMessage}}
-        <div class="ui success message">
-          <p>Profile data successfully updated.</p>
-        </div>
-      {{/if}}
-    </form>
-  </div>
 
   {{/if}}
 
 </template>
--->
