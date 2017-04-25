@@ -54,6 +54,15 @@ userRoutes.route('/profile', {
   },
 });
 
+<<<<<<< HEAD
+=======
+FlowRouter.route('/suggestion', {
+  name: 'Suggestion_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Suggestion_Page' });
+  },
+});
+>>>>>>> origin/master
 
 FlowRouter.notFound = {
   action() {
