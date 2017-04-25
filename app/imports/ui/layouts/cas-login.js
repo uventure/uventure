@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.Cas_Login.events({
   /**
@@ -28,6 +29,13 @@ Template.Cas_Login.events({
     Meteor.loginWithCas(callback);
     return false;
   },
+
+  'click .user-profile': function userProfile(event) {
+    event.preventDefault();
+    const username = Meteor.user().profile.name;
+    FlowRouter.go(`/${username}/profile`);
+    return false;
+  },
 });
 
 // Here's how to do the required initialization for Semantic UI dropdown menus.
@@ -35,4 +43,10 @@ Template.Cas_Login.onRendered(function enableDropDown() {
   this.$('.dropdown').dropdown({
     action: 'select',
   });
+});
+
+Template.Cas_Login.helpers({
+  routeUserName() {
+    return FlowRouter.getParam('username');
+  },
 });
