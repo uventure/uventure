@@ -97,18 +97,20 @@ Template.Add_Adventure_Page.events({
     console.log(instance.context.validate(updatedProfileData));
 
     // SORTA VALID NOT REALLY It's failing the validate check
-    if (instance.context.isValid()) {
+    //if (instance.context.isValid()) {
 
-      Adventures.insert(updatedProfileData);
-      console.log("Profile Data: " + updatedProfileData);
-      console.log(Adventures);
-      instance.messageFlags.set(displayErrorMessages, false);
-      instance.find('form').reset();
-      FlowRouter.go('Home_Page');
-    } else {
-      instance.messageFlags.set(displayErrorMessages, true);
-    }
+    //ADVENTURES . INSERT IS NOT A FUNCTION
+    Adventures.insert(updatedProfileData);
+    console.log("Profile Data: " + updatedProfileData);
+    console.log(Adventures);
+    instance.messageFlags.set(displayErrorMessages, false);
+    instance.find('form').reset();
+    FlowRouter.go('Home_Page');
   },
+   // } else {
+   //   instance.messageFlags.set(displayErrorMessages, true);
+  //  }
+ // },
 
   //   const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
   //  const id = Adventures.insert(updatedProfileData);
