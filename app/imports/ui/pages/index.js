@@ -11,8 +11,6 @@ import './edit-adventure-page.html';
 import './profile-page.html';
 import './profile-page.js';
 
-<<<<<<< HEAD
-=======
 import './suggestion-page.html';
->>>>>>> origin/master
+
 

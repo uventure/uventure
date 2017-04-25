@@ -71,7 +71,11 @@ Template.Add_Adventure_Page.helpers({
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
   adventure() {
-    return Adventures.findDoc(FlowRouter.getParam('adventureName'));
+    console.log("Swaggggg");
+    // return
+    console.log(Adventures.find().fetch());
+   // console.log(Adventures.findDoc(FlowRouter.getParam('adventureName')));
+    console.log("SWOGGGGGGG");
   },
 });
 
@@ -96,8 +100,8 @@ Template.Add_Adventure_Page.events({
     instance.context.validate(updatedProfileData);
 
     if (instance.context.isValid()) {
-      const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
-      const id = Adventures.update(docID, { $set: updatedProfileData });
+     // const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
+      const id = Adventures.insert(updatedProfileData);
 
       //  Adventures.insert(updatedProfileData);
       FlowRouter.go('Home_Page');
