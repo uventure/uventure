@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Adventures } from '/imports/api/adventure/AdventureCollection';
+import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection';
 
 if (Meteor.isClient) {
   Template.map.onCreated(function () {
@@ -48,20 +48,19 @@ const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Add_Adventure_Page.onCreated(function onCreated() {
-  this.subscribe(Adventures.getPublicationName());
+
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
+  // this.context = ContactsSchema.namedContext('Add_Contact_Page');
+
+  // this.subscribe(Adventures.getPublicationName());
+  // this.messageFlags = new ReactiveDict();
+  // this.messageFlags.set(displaySuccessMessage, false);
+  // this.messageFlags.set(displayErrorMessages, false);
   this.context = Adventures.getSchema().namedContext('Add_Adventure_Page');
 });
 
 Template.Add_Adventure_Page.helpers({
-  successClass() {
-    return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
-  },
-  displaySuccessMessage() {
-    return Template.instance().messageFlags.get(displaySuccessMessage);
-  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -70,14 +69,8 @@ Template.Add_Adventure_Page.helpers({
     const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
-  adventure() {
-    console.log("Swaggggg");
-    // return
-    console.log(Adventures.find().fetch());
-   // console.log(Adventures.findDoc(FlowRouter.getParam('adventureName')));
-    console.log("SWOGGGGGGG");
-  },
-});
+})
+;
 
 Template.Add_Adventure_Page.events({
   'submit .adventure-data-form'(event, instance) {
@@ -100,17 +93,28 @@ Template.Add_Adventure_Page.events({
     instance.context.validate(updatedProfileData);
 
     if (instance.context.isValid()) {
-     // const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
-      const id = Adventures.insert(updatedProfileData);
 
-      //  Adventures.insert(updatedProfileData);
-      FlowRouter.go('Home_Page');
-
-      instance.messageFlags.set(displaySuccessMessage, id);
+      Adventures.insert(updatedProfileData);
       instance.messageFlags.set(displayErrorMessages, false);
+      instance.find('form').reset();
+      instance.$('.dropdown').dropdown('restore defaults');
+      FlowRouter.go('Home_Page');
     } else {
-      instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
+
+  //   const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
+  //  const id = Adventures.insert(updatedProfileData);
+
+  //  Adventures.insert(updatedProfileData);
+//      FlowRouter.go('Home_Page');
+//
+  //    instance.messageFlags.set(displaySuccessMessage, id);
+  //  instance.messageFlags.set(displayErrorMessages, false);
+  // } else {
+  //  instance.messageFlags.set(displaySuccessMessage, false);
+  // instance.messageFlags.set(displayErrorMessages, true);
+  //}
+  //},
 });
