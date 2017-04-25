@@ -57,6 +57,7 @@ Template.Add_Adventure_Page.onCreated(function onCreated() {
   // this.messageFlags = new ReactiveDict();
   // this.messageFlags.set(displaySuccessMessage, false);
   // this.messageFlags.set(displayErrorMessages, false);
+  console.log(Adventures);
   this.context = Adventures.getSchema().namedContext('Add_Adventure_Page');
 });
 
@@ -84,20 +85,25 @@ Template.Add_Adventure_Page.events({
     const instagram = event.target.DESCRIPTION.value;
 
     const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram };
+    console.log(updatedProfileData);
 
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
     Adventures.getSchema().clean(updatedProfileData);
+    console.log(Adventures.getSchema());
     // Determine validity.
     instance.context.validate(updatedProfileData);
+    console.log(instance.context.validate(updatedProfileData));
 
+    // SORTA VALID NOT REALLY It's failing the validate check
     if (instance.context.isValid()) {
 
       Adventures.insert(updatedProfileData);
+      console.log("Profile Data: " + updatedProfileData);
+      console.log(Adventures);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
-      instance.$('.dropdown').dropdown('restore defaults');
       FlowRouter.go('Home_Page');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
