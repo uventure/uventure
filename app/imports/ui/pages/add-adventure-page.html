@@ -5,57 +5,58 @@
 </template>
 
 <template name="Add_Adventure_Page">
-  <div class="ui container">
-    <br><br><br>
-    <h1 style="text-align:center;">Start an adventure!</h1>
-    {{> map}}
-    <div class="ui form" style="padding: 2em;">
-      <div class="two fields">
-        <div class="field">
-          <label>ADVENTURE</label>
-          <input type="text" placeholder="Adventure Name">
-        </div>
-        <div class="field">
-          <label>ADVENTURE ORGANIZER</label>
-          <input type="text" placeholder="Organizer Name">
-        </div>
 
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>ADVENTURE TYPE</label>
-          <select class="ui dropdown">
-            <option value="">TYPE</option>
-            <option value="1">HIKING</option>
-            <option value="2">SWIMMING</option>
-            <option value="3">PARTY</option>
-            <option value="4">OTHER</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>ADVENTURE LOCATION</label>
-          <input type="text" placeholder="Adventure Location">
-        </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>ORGANIZER EMAIL</label>
-          <input type="text" placeholder="Organizer Email">
-        </div>
-        <div class="field">
-          <label>ORGANIZER PHONE</label>
-          <input type="text" placeholder="Phone Number">
-        </div>
+  {{#if Template.subscriptionsReady}}
+
+  <div class="ui text container segment">
+    <div class="ui dividing header">
+      Start your adventure!
+    </div>
+    <div>
+      {{> map}}
+    </div>
+    <form class="ui form adventure-data-form {{ successClass }} {{ errorClass }}">
+      <br>
+      <div class="fields">
+        {{> Text_Form_Control label="NAME" placeholder="Philip" value=adventure.adventureName errorMessage=(fieldError
+        "firstName")}}
+        {{> Text_Form_Control label="ORGANIZER" placeholder="Johnson" value=adventure.organizerName
+        errorMessage=(fieldError "lastName")}}
+
       </div>
 
       <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" tabindex="0" class="hidden">
-          <label>I agree to the Terms and Conditions</label>
-        </div>
+        {{> Text_Form_Control label="TYPE" placeholder="Student" value=adventure.type errorMessage=(fieldError
+        "title")}}
+        {{> Text_Form_Control label="LOCATION" placeholder="http://foo.com/shot.jpg" value=adventure.location
+        errorMessage=(fieldError "picture")}}
       </div>
-      <button class="ui button" type="submit">Submit</button>
-    </div>
 
+      <div class="field">
+        {{> Text_Form_Control label="CONTACT" placeholder="interests" value=adventure.contact errorMessage=(fieldError
+        "interests") }}
+      </div>
+
+      <div class="fields">
+
+        {{> Text_Form_Control label="PICTURE" placeholder="Student" value=adventure.picture errorMessage=(fieldError
+        "interests") }}
+
+      </div>
+
+      {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short bio statement here"
+      errorMessage=(fieldError "bio")}}
+
+
+      <button class="ui primary button" type="submit">Submit</button>
+      {{#if displaySuccessMessage}}
+      <div class="ui success message">
+        <p>Profile data successfully updated.</p>
+      </div>
+      {{/if}}
+    </form>
   </div>
+
+  {{/if}}
+
 </template>

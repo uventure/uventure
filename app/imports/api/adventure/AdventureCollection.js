@@ -2,114 +2,93 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import BaseCollection from '/imports/api/base/BaseCollection';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
-import { _ } from 'meteor/underscore';
 
-/** @module Interest */
+/** @module Profile */
 
 /**
- * Represents a specific interest, such as "Software Engineering".
+ * Profiles provide portfolio data for a user.
  * @extends module:Base~BaseCollection
  */
 class AdventureCollection extends BaseCollection {
 
   /**
-   * Creates the Interest collection.
+   * Creates the Profile collection.
    */
   constructor() {
     super('Adventure', new SimpleSchema({
-      name: { type: String },
-      description: { type: String, optional: true },
+      adventureName: { type: String },
+      // Remainder are optional
+      organizerName: { type: String, optional: true },
+      type: { type: String, optional: true },
+      location: { type: String, optional: true },
+      contactInfo: { type: [String], optional: true },
+      picture: { type: SimpleSchema.RegEx.Url, optional: true },
+      description: { type: [String], optional: true },
     }));
   }
 
   /**
-   * Defines a new Interest.
+   * Defines a new Profile.
    * @example
-   * Interests.define({ name: 'Software Engineering',
-   *                    description: 'Methods for group development of large, high quality software systems' });
-   * @param { Object } description Object with keys name and description.
-   * Name must be previously undefined. Description is optional.
-   * Creates a "slug" for this name and stores it in the slug field.
-   * @throws {Meteor.Error} If the interest definition includes a defined name.
+   * Profiles.define({ firstName: 'Philip',
+   *                   lastName: 'Johnson',
+   *                   username: 'johnson',
+   *                   bio: 'I have been a professor of computer science at UH since 1990.',
+   *                   interests: ['Application Development', 'Software Engineering', 'Databases'],
+   *                   title: 'Professor of Information and Computer Sciences',
+   *                   picture: 'http://philipmjohnson.org/headshot.jpg',
+   *                   github: 'https://github.com/philipmjohnson',
+   *                   facebook: 'https://facebook.com/philipmjohnson',
+   *                   instagram: 'https://instagram.com/philipmjohnson' });
+   * @param { Object } description Object with required key username.
+   * Remaining keys are optional.
+   * Username must be unique for all users. It should be the UH email account.
+   * Interests is an array of defined interest names.
+   * @throws { Meteor.Error } If a user with the supplied username already exists, or
+   * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ name, description }) {
-    check(name, String);
-    check(description, String);
-    if (this.find({ name }).count() > 0) {
-      throw new Meteor.Error(`${name} is previously defined in another Adventure`);
+  define({ adventureName = '', organizerName = '', type = '', location = '', contactInfo = '', picture = '', description = '' }) {
+    // make sure required fields are OK.
+    const checkPattern = {
+      adventureName: String,
+      organizerName: String,
+      type: String,
+      location: String,
+      contactInfo: String,
+      picture: String,
+      description: String
+    };
+    check({ adventureName, organizerName, type, location, contactInfo, picture, description }, checkPattern);
+
+    if (this.find({ adventureName }).count() > 0) {
+      throw new Meteor.Error(`${adventureName} is previously defined in another adventure`);
     }
-    return this._collection.insert({ name, description });
+
+    // Throw an error if any of the passed Interest names are not defined.
+    // Interests.assertNames(interests);
+    // return this._collection.insert({
+    //   firstName, lastName, username, bio, interests, picture, title, github,
+    //   facebook, instagram
+    // });
   }
 
   /**
-   * Returns the Interest name corresponding to the passed interest docID.
-   * @param interestID An interest docID.
-   * @returns { String } An interest name.
-   * @throws { Meteor.Error} If the interest docID cannot be found.
-   */
-  findName(adventureID) {
-    this.assertDefined(adventureID);
-    return this.findDoc(adventureID).name;
-  }
-
-  /**
-   * Returns a list of Interest names corresponding to the passed list of Interest docIDs.
-   * @param interestIDs A list of Interest docIDs.
-   * @returns { Array }
-   * @throws { Meteor.Error} If any of the instanceIDs cannot be found.
-   */
-  findNames(adventureIDs) {
-    return adventureIDs.map(adventureID => this.findName(adventureID));
-  }
-
-  /**
-   * Throws an error if the passed name is not a defined Interest name.
-   * @param name The name of an interest.
-   */
-  assertName(name) {
-    this.findDoc(name);
-  }
-
-  /**
-   * Throws an error if the passed list of names are not all Interest names.
-   * @param names An array of (hopefully) Interest names.
-   */
-  assertNames(names) {
-    _.each(names, name => this.assertName(name));
-  }
-
-  /**
-   * Returns the docID associated with the passed Interest name, or throws an error if it cannot be found.
-   * @param { String } name An interest name.
-   * @returns { String } The docID associated with the name.
-   * @throws { Meteor.Error } If name is not associated with an Interest.
-   */
-  findID(name) {
-    return (this.findDoc(name)._id);
-  }
-
-  /**
-   * Returns the docIDs associated with the array of Interest names, or throws an error if any name cannot be found.
-   * If nothing is passed, then an empty array is returned.
-   * @param { String[] } names An array of interest names.
-   * @returns { String[] } The docIDs associated with the names.
-   * @throws { Meteor.Error } If any instance is not an Interest name.
-   */
-  findIDs(names) {
-    return (names) ? names.map((instance) => this.findID(instance)) : [];
-  }
-
-  /**
-   * Returns an object representing the Interest docID in a format acceptable to define().
-   * @param docID The docID of an Interest.
+   * Returns an object representing the Profile docID in a format acceptable to define().
+   * @param docID The docID of a Profile.
    * @returns { Object } An object representing the definition of docID.
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const name = doc.name;
+    const adventureName = doc.adventureName;
+    const organizerName = doc.organizerName;
+    const type = doc.type;
+    const location = doc.location;
+    const contactInfo = doc.contactInfo;
+    const picture = doc.picture;
     const description = doc.description;
-    return { name, description };
+
+    return { firstName, lastName, username, bio, interests, picture, title, github, facebook, instagram };
   }
 }
 
