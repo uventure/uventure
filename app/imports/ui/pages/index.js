@@ -12,3 +12,8 @@ import './profile-page.html';
 import './profile-page.js';
 
 import './suggestion-page.html';
+<<<<<<< HEAD
+=======
+
+import './faq-page.html';
+>>>>>>> refs/remotes/origin/Issue#15

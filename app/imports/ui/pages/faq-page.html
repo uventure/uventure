@@ -1,0 +1,95 @@
+<template name="faq_page">
+  <div id="container">
+    <div class="ui four column doubling stackable grid container">
+      <div class="ui top attached tabular menu">
+        <a class="active item" data-tab="first">User Guide</a>
+        <a class="item" data-tab="second">Developer Guide</a>
+        <a class="item" data-tab="third">About Us</a>
+        <a class="item" data-tab="fourth">T.O.S</a>
+      </div>
+      <div class="ui bottom attached active tab segment" data-tab="first">
+        <h2>uVenture is a Meteor application to plan adventures for the University of Hawaii community. When you come to
+          the site, you are greeted by the landing page:</h2>
+        <img class="ui image" src="/images/landing.png">
+        <h2>Anyone with a UH account can login to uVenture by clicking on the login button. The UH CAS authentication
+          screen then appears and requests your UH account and password:</h2>
+        <img class="ui image" src="/images/caslogin.jpg">
+        <h2>Once authenticated, you can create a profile that provides a bio statement and list of interests, plus links
+          to Facebook and Instagram.</h2>
+        <img class="ui image" src="/images/profile.png">
+        <h2>Using the Map API users will be able to add an adventure by clicking on the map. A form will also be
+          available for users to set up their own adventure</h2>
+        <img class="ui image" src="/images/add.png">
+        <h2>In addition, the user that made the adventure can edit it.</h2>
+        <img class="ui image" src="/images/edit.png">
+        <h2>uVenture also provides a find adventure page. The option to join the adventure will only be available to
+          those who can login to the system with their UH account. </h2>
+        <img class="ui image" src="/images/find.png">
+      </div>
+
+      <div class="ui bottom attached tab segment" data-tab="second">
+        <h2>First, install <a href="https://www.meteor.com/install">meteor</a></h2>
+        <h2>Second, download a copy of <a href="https://github.com/uventure/uventure.github.io/archive/master.zip">uVenture</a>
+          or clone it using git</h2>
+        <h2>Third, cd into the app/ directory and install libraries with</h2>
+        <h2 style='border:2px black solid; font-size:42px;'>$ meteor npm install</h2>
+        <h2>Fourth, run the system with:</h2>
+        <h2 style='border:2px black solid; font-size:42px;'>$ meteor npm run start</h2>
+        <h2>If all goes well,the application will appear at http://localhost:3000. If you have an account on the UH test
+          CAS server, you can login</h2>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="third">
+        <h2><b>Team</b></h2>
+        <h2>uVenture was created by Christopher Nguyen, Brian Mayeshiro, and Jason Leong for ICS314</h2>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="fourth">
+        <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the
+          https://uventure.meteorapp.com/ website (the "Service") operated by uVenture ("us", "we", or "our").</p>
+        <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms.
+          These Terms apply to all visitors, users and others who access or use the Service.</p>
+        <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of
+          the terms then you may not access the Service. This Terms of Service is licensed by <a href="https://termsfeed.com" rel="nofollow">TermsFeed Generator</a> to uVenture.</p>
+        <h2>Links To Other Web Sites</h2>
+        <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by
+          uVenture.</p>
+        <p>uVenture has no control over, and assumes no responsibility for, the content, privacy policies, or
+          practices of any third party web sites or services. You further acknowledge and agree that uVenture shall
+          not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused
+          by or in connection with use of or reliance on any such content, goods or services available on or through
+          any such web sites or services.</p>
+        <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites
+          or services that you visit.</p>
+        <h2>Termination</h2>
+        <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any
+          reason whatsoever, including without limitation if you breach the Terms.</p>
+        <p>All provisions of the Terms which by their nature should survive termination shall survive termination,
+          including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of
+          liability.</p>
+        <h2>Governing Law</h2>
+        <p>These Terms shall be governed and construed in accordance with the laws of Hawaii, United States, without
+          regard to its conflict of law provisions.</p>
+        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those
+          rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining
+          provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us
+          regarding our Service, and supersede and replace any prior agreements we might have between us regarding the
+          Service.</p>
+        <h2>Changes</h2>
+        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision
+          is material we will try to provide at least 30 days notice prior to any new terms taking effect. What
+          constitutes a material change will be determined at our sole discretion.</p>
+        <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by
+          the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us.</p>
+
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>$('.menu .item')
+      .tab()
+  ;
+  </script>
+</template>
+
+
