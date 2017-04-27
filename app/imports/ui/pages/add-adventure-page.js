@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Adventures } from '/imports/api/adventure/AdventureCollection';
+import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection';
 
 if (Meteor.isClient) {
   Template.map.onCreated(function () {
@@ -15,12 +15,12 @@ if (Meteor.isClient) {
           });
 
           google.maps.event.addListener(map.instance, 'rightclick', function (event) {
-                var addedMarker = new google.maps.Marker({
+                let addedMarker = new google.maps.Marker({
                   position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
                   map: GoogleMaps.maps.map.instance,
                   animation: google.maps.Animation.BOUNCE,
                   draggable: true,
-                })
+                });
               }
           );
         });
@@ -40,28 +40,19 @@ if (Meteor.isClient) {
           mapTypeId: google.maps.MapTypeId.HYBRID,
         };
       }
-    }
+    },
   });
 }
 
-const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Add_Adventure_Page.onCreated(function onCreated() {
-  this.subscribe(Adventures.getPublicationName());
   this.messageFlags = new ReactiveDict();
-  this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = Adventures.getSchema().namedContext('Add_Adventure_Page');
+  this.context = AdventureCollection.namedContext('Add_Adventure_Page');
 });
 
 Template.Add_Adventure_Page.helpers({
-  successClass() {
-    return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
-  },
-  displaySuccessMessage() {
-    return Template.instance().messageFlags.get(displaySuccessMessage);
-  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -70,46 +61,37 @@ Template.Add_Adventure_Page.helpers({
     const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
-  adventure() {
-    console.log("Swaggggg");
-    // return
-    console.log(Adventures.find().fetch());
-   // console.log(Adventures.findDoc(FlowRouter.getParam('adventureName')));
-    console.log("SWOGGGGGGG");
-  },
 });
 
 Template.Add_Adventure_Page.events({
   'submit .adventure-data-form'(event, instance) {
     event.preventDefault();
-    const firstName = event.target.NAME.value;
-    const lastName = event.target.ORGANIZER.value;
-    const title = event.target.TYPE.value;
-    const picture = event.target.LOCATION.value;
-    const github = event.target.CONTACT.value;
-    const facebook = event.target.PICTURE.value;
-    const instagram = event.target.DESCRIPTION.value;
+    const adventureName = event.target.NAME.value;
+    const organizerName = event.target.ORGANIZER.value;
+    const type = event.target.TYPE.value;
+    const location = event.target.LOCATION.value;
+    const contactInfo = event.target.CONTACT.value;
+    const picture = event.target.PICTURE.value;
+    const description = event.target.DESCRIPTION.value;
 
-    const updatedProfileData = { firstName, lastName, title, picture, github, facebook, instagram };
-
+    const updatedProfileData = { adventureName, organizerName, type, location, contactInfo, picture, description };
+    console.log(updatedProfileData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedProfileData reflects what will be inserted.
-    Adventures.getSchema().clean(updatedProfileData);
+    AdventureCollection.clean(updatedProfileData);
+    console.log(AdventureCollection);
     // Determine validity.
     instance.context.validate(updatedProfileData);
-
+    console.log(instance.context.validate(updatedProfileData));
     if (instance.context.isValid()) {
-     // const docID = Adventures.findDoc(FlowRouter.getParam('adventureName'))._id;
-      const id = Adventures.insert(updatedProfileData);
-
-      //  Adventures.insert(updatedProfileData);
-      FlowRouter.go('Home_Page');
-
-      instance.messageFlags.set(displaySuccessMessage, id);
+      Adventures.insert(updatedProfileData);
+      console.log(updatedProfileData);
+      console.log(Adventures);
       instance.messageFlags.set(displayErrorMessages, false);
+      instance.find('form').reset();
+      FlowRouter.go('Home_Page');
     } else {
-      instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
