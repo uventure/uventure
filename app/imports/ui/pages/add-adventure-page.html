@@ -13,30 +13,32 @@
     <div>
       {{> map}}
     </div>
-    <form class="ui form adventure-data-form {{ successClass }} {{ errorClass }}">
+    <form class="ui fluid form adventure-data-form {{ successClass }} {{ errorClass }}">
       <br>
       <div class="fields">
-        {{> Text_Form_Control label="NAME" placeholder="Philip" value=adventure.adventureName errorMessage=(fieldError
-        "firstName")}}
-        {{> Text_Form_Control label="ORGANIZER" placeholder="Johnson" value=adventure.organizerName
-        errorMessage=(fieldError "lastName")}}
+        {{> Text_Form_Control label="NAME" placeholder="ICS Hike Aiea" value=adventure.adventureName
+        errorMessage=(fieldError
+        "adventureName")}}
+        {{> Text_Form_Control label="ORGANIZER" placeholder="Phillip Johnson" value=adventure.organizerName
+        errorMessage=(fieldError "organizerName")}}
       </div>
       <div class="field">
-        {{> Text_Form_Control label="TYPE" placeholder="Student" value=adventure.type errorMessage=(fieldError
-        "title")}}
-        {{> Text_Form_Control label="LOCATION" placeholder="http://foo.com/shot.jpg" value=adventure.location
+        {{> Text_Form_Control label="TYPE" placeholder="Hike" value=adventure.type errorMessage=(fieldError
+        "type")}}
+        {{> Text_Form_Control label="LOCATION" placeholder="Area or Address" value=adventure.location
         errorMessage=(fieldError "picture")}}
       </div>
       <div class="field">
-        {{> Text_Form_Control label="CONTACT" placeholder="interests" value=adventure.contactInfo errorMessage=(fieldError
+        {{> Text_Form_Control label="CONTACT" placeholder="Enter email or phone number or both!"
+        value=adventure.contactInfo errorMessage=(fieldError
         "interests") }}
       </div>
       <div class="fields">
-        {{> Text_Form_Control label="PICTURE" placeholder="Student" value=adventure.picture errorMessage=(fieldError
-        "interests") }}
+        {{> Text_Form_Control label="PICTURE" placeholder="https://foo.png" value=adventure.picture errorMessage=(fieldError
+        "picture") }}
       </div>
-      {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short bio statement here"
-      errorMessage=(fieldError "bio")}}
+      {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short description statement here"
+      errorMessage=(fieldError "description")}}
       <button class="ui primary button" type="submit">Submit</button>
       {{#if displaySuccessMessage}}
       <div class="ui success message">

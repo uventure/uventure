@@ -1,9 +1,5 @@
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-<<<<<<< HEAD
-// import { Template } from 'meteor/templating';
-=======
->>>>>>> origin/master
 
 /* eslint-disable object-shorthand, no-unused-vars */
 

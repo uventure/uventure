@@ -3,36 +3,40 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection';
+import { Meteor } from 'meteor/meteor';
+import { GoogleMaps } from 'meteor/dburles:google-maps';
+
+// Used to remove ESLint errors associated with dburles:google-maps and Google Maps API syntha
+/*  eslint-disable no-define, no-unused-vars, object-shorthand, no-undef, no-console  */
 
 if (Meteor.isClient) {
-  Template.map.onCreated(function () {
-        GoogleMaps.ready('map', function (map) {
-          var marker = new google.maps.Marker({
-            position: map.options.center,
-            map: map.instance,
-            animation: google.maps.Animation.DROP,
-            draggable: true,
-          });
+  Template.map.onCreated(function startingMarker() {
+    GoogleMaps.ready('map', function makeMarker(map) {
+      const marker = new google.maps.Marker({
+        position: map.options.center,
+        map: map.instance,
+        animation: google.maps.Animation.DROP,
+        draggable: true,
+      });
 
-          google.maps.event.addListener(map.instance, 'rightclick', function (event) {
-                let addedMarker = new google.maps.Marker({
-                  position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-                  map: GoogleMaps.maps.map.instance,
-                  animation: google.maps.Animation.BOUNCE,
-                  draggable: true,
-                });
-              }
-          );
+      google.maps.event.addListener(map.instance, 'rightclick', function addMarker(event) {
+        const addedMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+          map: GoogleMaps.maps.map.instance,
+          animation: google.maps.Animation.BOUNCE,
+          draggable: true,
         });
       }
-  );
+      );
+    });
+  });
 
-  Meteor.startup(function () {
+  Meteor.startup(function loadMap() {
     GoogleMaps.load();
   });
 
   Template.map.helpers({
-    mapOptions: function () {
+    mapOptions: function mapProperties() {
       if (GoogleMaps.loaded()) {
         return {
           center: new google.maps.LatLng(21.2969676, -157.821814),
@@ -40,6 +44,7 @@ if (Meteor.isClient) {
           mapTypeId: google.maps.MapTypeId.HYBRID,
         };
       }
+      return false;
     },
   });
 }
