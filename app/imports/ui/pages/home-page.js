@@ -1,11 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-<<<<<<< HEAD
-// import { AdventureCollection } from '../../api/adventure/AdventureCollection.js';
-// import { ReactiveDict } from 'meteor/reactive-dict';
-// import { _ } from 'meteor/underscore';
-=======
->>>>>>> origin/master
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe('Adventures');
