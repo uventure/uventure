@@ -62,7 +62,7 @@ Template.Profile_Page.events({
 
     const updatedProfileData = {
       firstName, lastName, title, picture, github, facebook, instagram, bio, interests,
-      username
+      username,
     };
 
     // Clear out any old validation errors.
@@ -71,8 +71,11 @@ Template.Profile_Page.events({
     Profiles.getSchema().clean(updatedProfileData);
     // Determine validity.
     instance.context.validate(updatedProfileData);
+    console.log('Hello: ');
+    console.log(updatedProfileData);
 
     if (instance.context.isValid()) {
+      // console.log("da stuff is valid");
       const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
       const id = Profiles.update(docID, { $set: updatedProfileData });
       instance.messageFlags.set(displaySuccessMessage, id);
