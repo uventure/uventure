@@ -7,6 +7,7 @@ import './add-adventure-page.js';
 import './find-adventure-page.html';
 
 import './edit-adventure-page.html';
+import './edit-adventure-page.js';
 
 import './profile-page.html';
 import './profile-page.js';

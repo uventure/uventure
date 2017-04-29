@@ -39,6 +39,12 @@
       </div>
       {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short description statement here"
       errorMessage=(fieldError "description")}}
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" name="terms">
+          <label>I agree to the Terms and Conditions</label>
+        </div>
+      </div>
       <button class="ui primary button" type="submit">Submit</button>
       {{#if displaySuccessMessage}}
       <div class="ui success message">
