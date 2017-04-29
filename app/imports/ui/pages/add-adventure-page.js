@@ -50,10 +50,13 @@ if (Meteor.isClient) {
 }
 
 const displayErrorMessages = 'displayErrorMessages';
+const displaySuccessMessage = 'displaySuccessMessage';
 
 Template.Add_Adventure_Page.onCreated(function onCreated() {
+  this.subscribe('Adventures');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
+  this.messageFlags.set(displaySuccessMessage, false);
   this.context = AdventureCollection.namedContext('Add_Adventure_Page');
 });
 
@@ -61,10 +64,19 @@ Template.Add_Adventure_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
+  successClass(){
+    return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
+  },
+  displaySuccessMessage(){
+    return Template.instance().messageFlags.get(displaySuccessMessage);
+  },
   fieldError(fieldName) {
     const invalidKeys = Template.instance().context.invalidKeys();
     const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
+  },
+  adventureId(){
+    return Adventures.findOne(FlowRouter.getParam('_id'));
   },
 });
 
@@ -79,24 +91,28 @@ Template.Add_Adventure_Page.events({
     const picture = event.target.PICTURE.value;
     const description = event.target.DESCRIPTION.value;
 
-    const updatedProfileData = { adventureName, organizerName, type, location, contactInfo, picture, description };
-    console.log(updatedProfileData);
+    const updatedData = { adventureName, organizerName, type, location, contactInfo, picture, description };
+    console.log(updatedData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that updatedProfileData reflects what will be inserted.
-    AdventureCollection.clean(updatedProfileData);
+    // Invoke clean so that updatedData reflects what will be inserted.
+    AdventureCollection.clean(updatedData);
     console.log(AdventureCollection);
     // Determine validity.
-    instance.context.validate(updatedProfileData);
-    console.log(instance.context.validate(updatedProfileData));
+    instance.context.validate(updatedData);
+    console.log(instance.context.validate(updatedData));
     if (instance.context.isValid()) {
-      Adventures.insert(updatedProfileData);
-      console.log(updatedProfileData);
+      console.log(FlowRouter.getParam('_id'), { $set: updatedData });
+      const id = Adventures.update(FlowRouter.getParam('_id'), { $set: updatedData });
+      console.log("Id: " + id);
+      console.log(updatedData);
       console.log(Adventures);
+      instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       FlowRouter.go('Home_Page');
     } else {
+      instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
