@@ -23,7 +23,7 @@ Template.Cas_Login.events({
     event.preventDefault();
     const callback = function loginCallback(error) {
       if (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     Meteor.loginWithCas(callback);
