@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
-import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection';
+import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection.js';
 import { Meteor } from 'meteor/meteor';
 import { GoogleMaps } from 'meteor/dburles:google-maps';
 
