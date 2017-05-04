@@ -6,7 +6,7 @@ import { Adventures, AdventureCollection } from '/imports/api/adventure/Adventur
 import { Meteor } from 'meteor/meteor';
 import { GoogleMaps } from 'meteor/dburles:google-maps';
 
-// Used to remove ESLint errors associated with dburles:google-maps and Google Maps API syntha
+// Used to remove ESLint errors associated with dburles:google-maps and Google Maps API
 /*  eslint-disable no-define, no-unused-vars, object-shorthand, no-undef, no-console  */
 
 if (Meteor.isClient) {
@@ -75,21 +75,18 @@ Template.Add_Adventure_Page.helpers({
     const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
     return errorObject && Template.instance().context.keyErrorMessage(errorObject.name);
   },
-  adventureId(){
-    return Adventures.findOne(FlowRouter.getParam('_id'));
-  },
 });
 
 Template.Add_Adventure_Page.events({
   'submit .adventure-data-form'(event, instance) {
     event.preventDefault();
-    const adventureName = event.target.NAME.value;
-    const organizerName = event.target.ORGANIZER.value;
-    const type = event.target.TYPE.value;
-    const location = event.target.LOCATION.value;
-    const contactInfo = event.target.CONTACT.value;
-    const picture = event.target.PICTURE.value;
-    const description = event.target.DESCRIPTION.value;
+    const adventureName = event.target.Name.value;
+    const organizerName = event.target.Organizer.value;
+    const type = event.target.Type.value;
+    const location = event.target.Location.value;
+    const contactInfo = event.target.Contact.value;
+    const picture = event.target.Picture.value;
+    const description = event.target.Description.value;
 
     const updatedData = { adventureName, organizerName, type, location, contactInfo, picture, description };
     console.log(updatedData);
@@ -102,12 +99,8 @@ Template.Add_Adventure_Page.events({
     instance.context.validate(updatedData);
     console.log(instance.context.validate(updatedData));
     if (instance.context.isValid()) {
-      console.log(FlowRouter.getParam('_id'), { $set: updatedData });
-      const id = Adventures.update(FlowRouter.getParam('_id'), { $set: updatedData });
-      console.log("Id: " + id);
+      const id = Adventures.insert(updatedData);
       console.log(updatedData);
-      console.log(Adventures);
-      instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       FlowRouter.go('Home_Page');
@@ -115,5 +108,6 @@ Template.Add_Adventure_Page.events({
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
+    console.log(Adventures.find({}).fetch());
   },
 });

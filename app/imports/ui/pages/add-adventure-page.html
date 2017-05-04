@@ -16,28 +16,29 @@
     <form class="ui fluid form adventure-data-form {{ successClass }} {{ errorClass }}">
       <br>
       <div class="fields">
-        {{> Text_Form_Control label="NAME" placeholder="ICS Hike Aiea" value=adventure.adventureName
+        {{> Text_Form_Control label="Name" placeholder="ICS Hike Aiea"
         errorMessage=(fieldError
         "adventureName")}}
-        {{> Text_Form_Control label="ORGANIZER" placeholder="Phillip Johnson" value=adventure.organizerName
+        {{> Text_Form_Control label="Organizer" placeholder="Phillip Johnson"
         errorMessage=(fieldError "organizerName")}}
       </div>
       <div class="field">
-        {{> Text_Form_Control label="TYPE" placeholder="Hike" value=adventure.type errorMessage=(fieldError
+        {{> Text_Form_Control label="Type" placeholder="Hike" errorMessage=(fieldError
         "type")}}
-        {{> Text_Form_Control label="LOCATION" placeholder="Area or Address" value=adventure.location
-        errorMessage=(fieldError "picture")}}
+        {{> Text_Form_Control label="Location" placeholder="Area or Address"
+        errorMessage=(fieldError "location")}}
       </div>
       <div class="field">
-        {{> Text_Form_Control label="CONTACT" placeholder="Enter email or phone number or both!"
-        value=adventure.contactInfo errorMessage=(fieldError
+        {{> Text_Form_Control label="Contact" placeholder="Enter email or phone number or both!"
+        errorMessage=(fieldError
         "interests") }}
       </div>
       <div class="fields">
-        {{> Text_Form_Control label="PICTURE" placeholder="https://foo.png" value=adventure.picture errorMessage=(fieldError
+        {{> Text_Form_Control label="Picture" placeholder="https://foo.png"
+        errorMessage=(fieldError
         "picture") }}
       </div>
-      {{> TextArea_Form_Control label="DESCRIPTION" value=adventure.description placeholder="Short description statement here"
+      {{> TextArea_Form_Control label="Description" placeholder="Short description statement here"
       errorMessage=(fieldError "description")}}
       <div class="field">
         <div class="ui checkbox">
