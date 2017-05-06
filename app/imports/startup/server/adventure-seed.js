@@ -2,7 +2,7 @@ import { Adventures } from '../../api/adventure/AdventureCollection.js';
 import { _ } from 'meteor/underscore';
 
 /**
- * A list of Stuff to pre-fill the Collection.
+ * A list of Adventures to pre-fill the Collection.
  * @type {*[]}
  */
 const adventureSeed = [
