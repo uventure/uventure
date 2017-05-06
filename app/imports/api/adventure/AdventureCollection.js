@@ -3,14 +3,17 @@ import { Mongo } from 'meteor/mongo';
 
 export const Adventures = new Mongo.Collection('Adventures');
 
+adventures = Adventures;
+
 export const AdventureCollection = new SimpleSchema({
-  adventureName: { type: String, optional: false },
-  organizerName: { type: String, optional: false },
-  type: { type: String, optional: false },
-  location: { type: String, optional: false },
-  contactInfo: { type: String, optional: false },
-  picture: { type: SimpleSchema.RegEx.Url, optional: false },
-  description: { type: String, optional: false },
+  adventureName: { label: 'Name', type: String, optional: false },
+  organizerName: { label: 'Organizer', type: String, optional: false },
+  type: { label: 'Type', type: String, optional: false },
+  location: { label: 'Location', type: String, optional: false },
+  contactInfo: { label: 'Contact', type: String, optional: false },
+  picture: { label: 'Picture', type: SimpleSchema.RegEx.Url, optional: false },
+  description: { label: 'Description', type: String, optional: false },
 });
+
 
 Adventures.attachSchema(AdventureCollection);
