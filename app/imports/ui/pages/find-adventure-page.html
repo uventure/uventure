@@ -4,13 +4,13 @@
       <div class="ui five cards">
         {{#each adventure}}
         <div class="ui link card">
-          <div class="image"><img src={{adventure.picture}}></div>
+          <div class="image"><img src={{this.picture}}></div>
           <div class="content">
-            <div class="header">{{adveture.adventureName}}</div>
-            <div class="organizer">{{adventure.organizerName}}</div>
-            <div class="location">{{adventure.type}}</div>
-            <div class="location">{{adventure.location}}</div>
-            <div class="description">{{adventure.description}}</div>
+            <div class="header">{{this.adventureName}}</div>
+            <div class="organizer">{{this.organizerName}}</div>
+            <div class="location">{{this.type}}</div>
+            <div class="location">{{this.location}}</div>
+            <div class="description">{{this.description}}</div>
           </div>
           <div class="extra content">
 
