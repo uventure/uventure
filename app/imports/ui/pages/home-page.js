@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe('Adventures');
+  this.subscribe('Profiles');
 });
 
 /* eslint-disable object-shorthand */

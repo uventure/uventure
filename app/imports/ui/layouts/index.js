@@ -7,6 +7,6 @@ import './header.js';
 import './if-logged-in.html';
 import './if-logged-in.js';
 import './loading.html';
-import './cas-login.html';
-import './cas-login.js';
+import '../components/landing/cas-login.html';
+import '../components/landing/cas-login.js';
 import './user-layout.css';

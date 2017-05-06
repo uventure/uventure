@@ -29,7 +29,6 @@ Template.Cas_Login.events({
     Meteor.loginWithCas(callback);
     return false;
   },
-
   'click .user-profile': function userProfile(event) {
     event.preventDefault();
     const username = Meteor.user().profile.name;

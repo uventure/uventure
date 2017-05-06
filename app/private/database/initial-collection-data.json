@@ -1,3 +1,4 @@
+
 {
   "comment": "Initial contents for the BowFolios database. For development purposes only.",
   "collections": [
@@ -132,9 +133,9 @@
           "picture": "/images/binsted.jpg"
         },
         {
-          "firstName": "Henri",
-          "lastName": "Casanova",
-          "username": "henric",
+          "firstName": "Brian",
+          "lastName": "",
+          "username": "brianmay",
           "github": "henricasanova",
           "bio": "I am a Professor of Information and Computer Sciences at the University of Hawaii.",
           "interests": [

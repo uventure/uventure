@@ -73,6 +73,7 @@ Template.Profile_Page.events({
     instance.context.validate(updatedProfileData);
 
     if (instance.context.isValid()) {
+      console.log("Hello");
       const docID = Profiles.findDoc(FlowRouter.getParam('username'))._id;
       const id = Profiles.update(docID, { $set: updatedProfileData });
       instance.messageFlags.set(displaySuccessMessage, id);

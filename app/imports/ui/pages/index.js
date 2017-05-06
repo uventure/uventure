@@ -4,8 +4,6 @@ import './home-page.js';
 import './add-adventure-page.html';
 import './add-adventure-page.js';
 
-import './find-adventure-page.html';
-
 import './edit-adventure-page.html';
 import './edit-adventure-page.js';
 
