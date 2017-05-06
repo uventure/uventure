@@ -62,9 +62,9 @@ FlowRouter.route('/suggestion', {
 });
 
 FlowRouter.route('/faq', {
-  name: 'faq_page',
+  name: 'Faq_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'faq_page' });
+    BlazeLayout.render('App_Body', { main: 'Faq_Page' });
   },
 });
 

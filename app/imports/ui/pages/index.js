@@ -4,12 +4,9 @@ import './home-page.js';
 import './add-adventure-page.html';
 import './add-adventure-page.js';
 
-<<<<<<< HEAD
 import './find-adventure-page.html';
 import './find-adventure-page.js';
 
-=======
->>>>>>> origin/master
 import './edit-adventure-page.html';
 import './edit-adventure-page.js';
 
