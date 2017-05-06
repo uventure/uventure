@@ -2,7 +2,7 @@
   {{#if authInProcess}}
     <p>loading ...</p>
   {{else}}
-    {{#if canShow}}
+    {{#if isAuthorized}}
       {{> UI.contentBlock }}
     {{else}}
       <div style="padding-top: 40px" class="ui text container">
