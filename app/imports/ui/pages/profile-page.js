@@ -65,6 +65,8 @@ Template.Profile_Page.events({
       username,
     };
 
+    console.log(updatedProfileData);
+
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedProfileData reflects what will be inserted.

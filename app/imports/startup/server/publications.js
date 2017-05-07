@@ -1,7 +1,12 @@
 import { Adventures } from '/imports/api/adventure/AdventureCollection.js';
-// import { Profile } from '/imports/api/profile/ProfileCollection';
+import { Profiles } from '/imports/api/profile/ProfileCollection.js';
+import { Interests } from '/imports/api/interest/InterestCollection.js';
+
 // Adventures.publish();
-// Profile.publish();
+Profiles.publish();
+Interests.publish();
+
 Meteor.publish('Adventures', function publishAdventureData(){
   return Adventures.find();
 });
+
