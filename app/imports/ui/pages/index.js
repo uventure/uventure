@@ -16,3 +16,11 @@ import './profile-page.js';
 import './suggestion-page.html';
 
 import './faq-page.html';
+
+import './calendar-page.html';
+import './calendar-page.js';
+
+import './create-event-modal.html';
+import './create-event-modal.js';
+
+
