@@ -51,7 +51,7 @@ body {
 }
 
 .grid {
-  display: inline-block
+  display: inline-block;
   position: relative;
   margin-top: -5px;
 }
@@ -84,13 +84,32 @@ body {
 }
 
 #container {
-  background-image:url(/images/faq.jpg);
-  /*background-position: center;*/
   background-size: cover;
   height: 1000px;
   padding-top: 50px;
 }
 
+#calendar-modal {
+  padding: 10px 10px 10px 10px; /* Add padding to the edges of the modal. */
+}
 
+.fc-event-container {
+  padding: 5px !important; /* Add padding between events. */
+}
+
+.fc-event {
+  padding: 5px 10px; /* Add padding between event text and the edge. */
+  border-color: #ddd; /* Set border color. */
+  background: black; /* Set the event background to black. */
+}
+
+.fc-content {
+  color: white; /* Set the event text to white */
+}
+
+/* Configure the event time text. */
+.time {
+  margin: 0;
+}
 
 
