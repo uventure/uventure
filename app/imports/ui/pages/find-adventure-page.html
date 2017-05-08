@@ -1,6 +1,8 @@
 <template name="Find_Adventure_Page">
   <div style="margin-top: 10px" class="ui container">
-    <div class="ui dividing header" style="text-align:center; font-size: 24px; padding-top:1em;">Looking for an adventure?</div>
+    <div class="ui dividing header" style="text-align:center; font-size: 24px; padding-top:1em;">Looking for an
+      adventure?
+    </div>
     <div class="ui padded segment">
       <div class="ui five cards">
         {{#each adventure}}
@@ -8,20 +10,25 @@
           <div class="image"><img src={{this.picture}}></div>
           <div class="content">
             <div class="header">{{this.adventureName}}</div>
-            <div class="organizer">{{this.organizerName}}</div>
-            <div class="type">{{this.type}}</div>
-          </div>
-          <div>
-            <div class="location">{{this.location}}</div>
+            <div class="meta">{{this.organizerName}}</div>
+            <div class="description">{{this.description}}</div>
           </div>
           <div class="extra content">
-            <div class="description">{{this.description}}</div>
+      <div class="right floated">
+         <i class="map icon"></i>
+      {{this.location}}
+      </div><div class="left floated">
+        <i class="find icon"></i>
+        {{this.type}}
+      </div>
+          </div>
+          <div class="extra content" style="background-color:yellowgreen; color:black;">
+            <i class="write icon"></i>
+            <a href="{{pathFor 'Edit_Adventure_Page' _id=this._id}}">Edit Adventure</a>
           </div>
         </div>
         {{/each}}
       </div>
-
     </div>
   </div>
-
 </template>
