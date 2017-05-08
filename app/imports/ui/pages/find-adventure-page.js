@@ -8,7 +8,6 @@ Template.Find_Adventure_Page.onCreated(function onCreated() {
 
 Template.Find_Adventure_Page.helpers({
   adventure() {
-    console.log(Adventures.find({}).fetch());
     return Adventures.find().fetch();
   },
 });
