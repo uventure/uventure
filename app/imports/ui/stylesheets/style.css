@@ -85,7 +85,13 @@ body {
 
 #container {
   background-image:url(/images/faq.jpg);
-  /*background-position: center;*/
+  background-size: cover;
+  height: 1000px;
+  padding-top: 50px;
+}
+
+#suggestion {
+  background-image:url(/images/suggestion.jpg);
   background-size: cover;
   height: 1000px;
   padding-top: 50px;
