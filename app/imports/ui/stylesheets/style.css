@@ -113,7 +113,7 @@ body {
 }
 
 #container {
-  background-image: url(/images/faq.jpg);
+  background-image: url(/images/faq.jpg) center center fixed;
   background-size: cover;
   height: 1000px;
   padding-top: 50px;
