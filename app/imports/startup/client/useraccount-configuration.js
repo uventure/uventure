@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Profiles } from '/imports/api/profile/ProfileCollection.js';
 
 /**
  * Define a callback to be run when after a user logs in to redirect them to their home page.
@@ -15,7 +16,13 @@ Accounts.onLogin(function onLogin() {
   const initialLogin = (id && onLandingPage);
 
   if (initialLogin) {
+    console.log("initial login via useracc config file");
     const username = Meteor.user().profile.name;
+    if (!Profiles.isDefined(username)) {
+      console.log("Defined a profile thru useracc config");
+      Profiles.define({ username });
+    }
+    console.log("going to profile page via useracc config");
     FlowRouter.go(`/${username}/profile`);
   }
 });
