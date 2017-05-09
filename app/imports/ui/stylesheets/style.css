@@ -17,9 +17,9 @@ body {
   -webkit-text-fill-color: white;
   -webkit-background-clip: text;
   text-shadow: 0px 3px 0px darkgreen,
-  0px 14px 10px rgba(0,0,0,0.15),
-  0px 24px 2px rgba(0,0,0,0.1),
-  0px 34px 30px rgba(0,0,0,0.1);
+  0px 14px 10px rgba(0, 0, 0, 0.15),
+  0px 24px 2px rgba(0, 0, 0, 0.1),
+  0px 34px 30px rgba(0, 0, 0, 0.1);
 }
 
 .grad-background .ui.second.header {
@@ -28,9 +28,9 @@ body {
   -webkit-background-clip: text;
   width: 600px;
   text-shadow: 0px 3px 0px black,
-  0px 14px 10px rgba(0,0,0,0.15),
-  0px 24px 2px rgba(0,0,0,0.1),
-  0px 34px 30px rgba(0,0,0,0.1);
+  0px 14px 10px rgba(0, 0, 0, 0.15),
+  0px 24px 2px rgba(0, 0, 0, 0.1),
+  0px 34px 30px rgba(0, 0, 0, 0.1);
 }
 
 .grad-background .ui.tagline.header {
@@ -39,9 +39,9 @@ body {
   -webkit-background-clip: text;
   width: 700px;
   text-shadow: 0px 3px 0px black,
-  0px 14px 10px rgba(0,0,0,0.15),
-  0px 24px 2px rgba(0,0,0,0.1),
-  0px 34px 30px rgba(0,0,0,0.1);
+  0px 14px 10px rgba(0, 0, 0, 0.15),
+  0px 24px 2px rgba(0, 0, 0, 0.1),
+  0px 34px 30px rgba(0, 0, 0, 0.1);
 }
 
 .categories {
@@ -57,29 +57,29 @@ body {
 }
 
 .ui.black.button.button1 {
-  position:absolute;
-  width:100px;
-  height:30px;
-  top:500px;
-  left:50%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  top: 500px;
+  left: 50%;
   margin: -20px 0px 0px -75px;
 }
 
 .ui.black.button.button2 {
-  position:absolute;
-  width:100px;
-  height:30px;
-  top:1000px;
-  left:50%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  top: 1000px;
+  left: 50%;
   margin: -20px 0px 0px -75px;
 }
 
 .ui.black.button.button3 {
-  position:absolute;
-  width:100px;
-  height:30px;
-  top:1500px;
-  left:50%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  top: 1500px;
+  left: 50%;
   margin: -20px 0px 0px -75px;
 }
 
@@ -111,5 +111,20 @@ body {
 .time {
   margin: 0;
 }
+
+#container {
+  background-image: url(/images/faq.jpg);
+  background-size: cover;
+  height: 1000px;
+  padding-top: 50px;
+}
+
+#suggestion {
+  background-image: url(/images/suggestion.jpg);
+  background-size: cover;
+  height: 1000px;
+  padding-top: 50px;
+}
+
 
 
