@@ -18,3 +18,4 @@ npm-debug.log
 
 # Ignore the mLab files
 settings.json
+app/imports/startup/server/index.js

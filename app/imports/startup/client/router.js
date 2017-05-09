@@ -23,7 +23,7 @@ FlowRouter.route('/add', {
   },
 });
 
-FlowRouter.route('/edit', {
+FlowRouter.route('/edit/:_id', {
   name: 'Edit_Adventure_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Edit_Adventure_Page' });

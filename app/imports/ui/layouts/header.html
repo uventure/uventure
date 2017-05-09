@@ -12,10 +12,8 @@
         Adventures! </a>
       <a class="{{ isActiveRoute 'Faq_Page'}} item" href="{{ pathFor 'Faq_Page' }}">
         FAQ </a>
-      {{#if currentUser}}
-      <a class="{{ isActiveRoute 'List_Stuff_Page'}} item" href="{{ pathFor 'Calendar_Page' }}">
-        Calendar </a>
-      {{/if}}
+      <a class="{{ isActiveRoute 'Calendar_Page'}} item" href="{{ pathFor 'Calendar_Page' }}">
+        UH Calendar </a>
       <a href="{{pathFor 'Home_Page'}}" class="right aligned item">{{> Cas_Login align="right"}} </a>
     </div>
   </div>

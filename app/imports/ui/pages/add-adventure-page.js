@@ -89,25 +89,20 @@ Template.Add_Adventure_Page.events({
     const description = event.target.Description.value;
 
     const updatedData = { adventureName, organizerName, type, location, contactInfo, picture, description };
-    console.log(updatedData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedData reflects what will be inserted.
     AdventureCollection.clean(updatedData);
-    console.log(AdventureCollection);
     // Determine validity.
     instance.context.validate(updatedData);
-    console.log(instance.context.validate(updatedData));
     if (instance.context.isValid()) {
       const id = Adventures.insert(updatedData);
-      console.log(updatedData);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
-      FlowRouter.go('Home_Page');
+      FlowRouter.go('Find_Adventure_Page');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
-    console.log(Adventures.find({}).fetch());
   },
 });
