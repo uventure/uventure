@@ -25,7 +25,7 @@ class ProfileCollection extends BaseCollection {
       interests: { type: [String], optional: true },
       title: { type: String, optional: true },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
-      github: { type: SimpleSchema.RegEx.Url, optional: true },
+      twitter: { type: SimpleSchema.RegEx.Url, optional: true },
       facebook: { type: SimpleSchema.RegEx.Url, optional: true },
       instagram: { type: SimpleSchema.RegEx.Url, optional: true },
     }));
@@ -41,7 +41,7 @@ class ProfileCollection extends BaseCollection {
    *                   interests: ['Application Development', 'Software Engineering', 'Databases'],
    *                   title: 'Professor of Information and Computer Sciences',
    *                   picture: 'http://philipmjohnson.org/headshot.jpg',
-   *                   github: 'https://github.com/philipmjohnson',
+   *                   twitter: 'https://twitter.com/philipmjohnson',
    *                   facebook: 'https://facebook.com/philipmjohnson',
    *                   instagram: 'https://instagram.com/philipmjohnson' });
    * @param { Object } description Object with required key username.
@@ -49,10 +49,10 @@ class ProfileCollection extends BaseCollection {
    * Username must be unique for all users. It should be the UH email account.
    * Interests is an array of defined interest names.
    * @throws { Meteor.Error } If a user with the supplied username already exists, or
-   * if one or more interests are not defined, or if github, facebook, and instagram are not URLs.
+   * if one or more interests are not defined, or if twitter, facebook, and instagram are not URLs.
    * @returns The newly created docID.
    */
-  define({ firstName = '', lastName = '', username, bio = '', interests, picture = '', title = '', github = '',
+  define({ firstName = '', lastName = '', username, bio = '', interests, picture = '', title = '', twitter = '',
       facebook = '', instagram = '' }) {
     // make sure required fields are OK.
     const checkPattern = { firstName: String, lastName: String, username: String, bio: String, picture: String,
@@ -65,7 +65,7 @@ class ProfileCollection extends BaseCollection {
 
     // Throw an error if any of the passed Interest names are not defined.
     Interests.assertNames(interests);
-    return this._collection.insert({ firstName, lastName, username, bio, interests, picture, title, github,
+    return this._collection.insert({ firstName, lastName, username, bio, interests, picture, title, twitter,
       facebook, instagram });
   }
 
@@ -83,10 +83,10 @@ class ProfileCollection extends BaseCollection {
     const interests = doc.interests;
     const picture = doc.picture;
     const title = doc.title;
-    const github = doc.github;
+    const twitter = doc.twitter;
     const facebook = doc.facebook;
     const instagram = doc.instagram;
-    return { firstName, lastName, username, bio, interests, picture, title, github, facebook, instagram };
+    return { firstName, lastName, username, bio, interests, picture, title, twitter, facebook, instagram };
   }
 }
 
