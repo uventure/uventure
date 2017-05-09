@@ -22,7 +22,7 @@ const adventureSeed = [
     location: 'Maunalua Bay',
     contactInfo: '808-311-2331 or vsouh@hawaii.edu',
     picture: 'http://www.unrealhawaii.com/wp-content/uploads/2013/06/DSC_4803.jpg',
-    description: 'Join the VSOUH for a morning around-the-island drive. All members welcome. No fees. RSVP by  June 7th.',
+    description: 'Join the VSOUH for a morning around-the-island drive. No fees. RSVP by  June 7th.',
   },
   {
     adventureName: 'Laie Beach Cleanup',

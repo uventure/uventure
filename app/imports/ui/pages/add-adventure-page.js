@@ -64,10 +64,10 @@ Template.Add_Adventure_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  successClass(){
+  successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
-  displaySuccessMessage(){
+  displaySuccessMessage() {
     return Template.instance().messageFlags.get(displaySuccessMessage);
   },
   fieldError(fieldName) {

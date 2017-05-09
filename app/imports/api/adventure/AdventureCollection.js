@@ -1,9 +1,10 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Mongo } from 'meteor/mongo';
 
+/*  eslint-disable no-unused-vars */
 export const Adventures = new Mongo.Collection('Adventures');
 
-adventures = Adventures;
+const adventures = Adventures;
 
 export const AdventureCollection = new SimpleSchema({
   adventureName: { label: 'Name', type: String, optional: false },

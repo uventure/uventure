@@ -3,11 +3,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { _ } from 'meteor/underscore';
 import { Adventures, AdventureCollection } from '/imports/api/adventure/AdventureCollection.js';
-import { Meteor } from 'meteor/meteor';
-import { GoogleMaps } from 'meteor/dburles:google-maps';
 
 // Used to remove ESLint errors associated with dburles:google-maps and Google Maps API
-/*  eslint-disable no-define, no-unused-vars, object-shorthand, no-undef, no-console  */
+/*  eslint-disable no-define, no-alert, no-unused-vars, object-shorthand, no-undef, no-console  */
 
 const displayErrorMessages = 'displayErrorMessages';
 const displaySuccessMessage = 'displaySuccessMessage';
@@ -21,18 +19,17 @@ Template.Edit_Adventure_Page.onCreated(function onCreated() {
 });
 
 Template.Edit_Adventure_Page.helpers({
-  adventureDataField(fieldName){
+  adventureDataField(fieldName) {
     const adventureData = Adventures.findOne(FlowRouter.getParam('_id'));
-    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return adventureData && adventureData[fieldName];
   },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  successClass(){
+  successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
-  displaySuccessMessage(){
+  displaySuccessMessage() {
     return Template.instance().messageFlags.get(displaySuccessMessage);
   },
   fieldError(fieldName) {
@@ -53,18 +50,14 @@ Template.Edit_Adventure_Page.events({
     const picture = event.target.Picture.value;
     const description = event.target.Description.value;
     const updatedData = { adventureName, organizerName, type, location, contactInfo, picture, description };
-    console.log(updatedData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedData reflects what will be inserted.
     AdventureCollection.clean(updatedData);
-    console.log(AdventureCollection);
     // Determine validity.
     instance.context.validate(updatedData);
-    console.log(instance.context.validate(updatedData));
     if (instance.context.isValid()) {
       Adventures.update(FlowRouter.getParam('_id'), { $set: updatedData });
-      console.log(updatedData);
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       FlowRouter.go('Find_Adventure_Page');
