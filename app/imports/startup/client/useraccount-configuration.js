@@ -18,7 +18,7 @@ Accounts.onLogin(function onLogin() {
     if (!Profiles.isDefined(username)) {
       Profiles.define({ username });
     }
-    FlowRouter.go('/${username}/profile');
+    FlowRouter.go(`/${username}/profile`);
   }
 });
 
