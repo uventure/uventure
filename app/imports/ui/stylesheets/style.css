@@ -126,5 +126,10 @@ body {
   padding-top: 50px;
 }
 
-
+#suggestion2 {
+  background-image: url('http://i.huffpost.com/gadgets/slideshows/355831/slide_355831_3908601_free.jpg');
+  background-size: cover;
+  height: 1000px;
+  padding-top: 50px;
+}
 
