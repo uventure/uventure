@@ -25,7 +25,7 @@ const eventDataSeed = [
     endString: '11:00PM',
   },
   {
-    title: 'Commencement',
+    title: 'Commencement 1',
     start: '2017-05-13T10:00-10:00',
     end: '2017-05-14T23:00-10:00',
     startValue: '10',
@@ -43,10 +43,10 @@ const eventDataSeed = [
     endString: '11:00PM',
   },
   {
-    title: 'Commencement',
-    start: '2017-05-13T10:00-10:00',
+    title: 'Commencement 2',
+    start: '2017-05-13T03:00-10:00',
     end: '2017-05-14T23:00-10:00',
-    startValue: '10',
+    startValue: '3',
     endValue: '23',
     startString: '10:00AM',
     endString: '11:00PM',
