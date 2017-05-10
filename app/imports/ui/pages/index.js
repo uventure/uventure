@@ -13,6 +13,9 @@ import './edit-adventure-page.js';
 import './profile-page.html';
 import './profile-page.js';
 
+import './my-profile-page.html';
+import './my-profile-page.js';
+
 import './suggestion-page.html';
 
 import './faq-page.html';

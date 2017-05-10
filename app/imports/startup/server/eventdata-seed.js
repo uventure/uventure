@@ -90,9 +90,10 @@ const eventDataSeed = [
 ];
 
 /**
- * Initialize the Profile collection if empty with seed data.
+ * Initialize the collection if empty with seed data.
  */
-_.each(eventDataSeed, function seedIt(event) {
-  EventData.insert(event);
-});
-
+if (EventData.find().count() === 0) {
+  _.each(eventDataSeed, function seedIt(event) {
+    EventData.insert(event);
+  });
+}

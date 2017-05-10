@@ -46,10 +46,11 @@ Template.Edit_Adventure_Page.events({
     const organizerName = event.target.Organizer.value;
     const type = event.target.Type.value;
     const location = event.target.Location.value;
+    const time = event.target.Time.value;
     const contactInfo = event.target.Contact.value;
     const picture = event.target.Picture.value;
     const description = event.target.Description.value;
-    const updatedData = { adventureName, organizerName, type, location, contactInfo, picture, description };
+    const updatedData = { adventureName, organizerName, type, location, time, contactInfo, picture, description };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedData reflects what will be inserted.

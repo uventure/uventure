@@ -1,0 +1,37 @@
+<template name="My_Profile_Page">
+  <div style="margin-top: 10px" class="ui container">
+    <div class="ui dividing header" style="text-align:center; font-size: 24px; padding-top:1em;">Hi adventurer!
+    </div>
+    <div class="ui padded segment">
+      <div class="ui one large card">
+        {{#each profile}}
+        <div class="ui link card">
+          <div class="image"><img src={{this.picture}}></div>
+          <div class="content">
+            <div class="header">{{this.firstName}}</div>
+            <div class="header">{{this.lastName}}</div>
+            <div class="meta">{{this.title}}</div>
+            <div class="meta">{{this.interests}}</div>
+            <div class="meta">{{this.username}}</div>
+            <div class="description">{{this.bio}}</div>
+          </div>
+          <div class="extra content">
+            <div class="right floated">
+              <i class="map icon"></i>
+              {{this.twitter}}
+            </div><div class="left floated">
+            <i class="find icon"></i>
+            {{this.facebook}}
+            {{this.instagram}}
+          </div>
+          </div>
+          <div class="extra content" style="background-color:yellowgreen; color:black;">
+            <i class="write icon"></i>
+            <a href="{{pathFor 'Find_Adventure_Page' }}">Look for adventures near you!</a>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
